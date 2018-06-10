@@ -8,6 +8,8 @@ import (
 	"math"
 	"math/rand"
 	"math/cmplx"
+	"runtime"
+	"time"
 )
 
 // package level
@@ -71,6 +73,77 @@ func main() {
 	fmt.Println("Happy", Pi, "Day")
 
 
+	/*
+	Go has only one looping construct, the for loop.
+		there are no parentheses surrounding the three components of the for statement
+		and the braces { } are always required.
+	 */
+	sum := 0
+	for i := 0; i < 10; i++ {
+		sum += i
+	}
+
+	fmt.Println(sum)
+
+
+
+	/*
+		like While loop & drop the semicolons;
+	 */
+	sum2 := 1
+	for ; sum2 < 1000; {
+		sum2 += sum2
+	}
+	fmt.Println(sum2)
+
+
+	/*
+		Go's switch cases need not be constants, and the values involved need not be integers.
+	 */
+	fmt.Print("Kayid runs on ")
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		fmt.Println("macOS")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		// freebsd, openbsd,
+		// plan9, windows...
+		fmt.Printf("%s.", os)
+	}
+
+	/*
+		Switch with no condition
+	 */
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon.")
+	default:
+		fmt.Println("Good evening.")
+	}
+
+
+	/*
+		A defer statement defers the execution of a function until the surrounding function returns.
+	 */
+	defer fmt.Println("world")
+
+	fmt.Println("hello")
+
+
+	/*
+		Last-in-First-out execution!
+	 */
+	fmt.Println("counting")
+
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+
+	fmt.Println("done")
 }
 
 func add(x int, y int) int {

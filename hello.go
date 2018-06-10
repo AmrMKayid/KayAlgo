@@ -23,6 +23,12 @@ var (
 )
 
 
+type Vertex struct {
+	X int
+	Y int
+}
+
+
 func main() {
 	fmt.Println("Hello, World")
 	fmt.Println("Welcome to Algorithms Design in GoLang")
@@ -144,6 +150,100 @@ func main() {
 	}
 
 	fmt.Println("done")
+
+
+	fmt.Println(Vertex{3, 7})
+
+	/*
+		Pointers to structs
+	 */
+	v := Vertex{1, 2}
+	p := &v
+	p.X = 1e9
+	fmt.Println(v)
+
+
+	var (
+		v1 = Vertex{1, 2}  // has type Vertex
+		v2 = Vertex{X: 1}  // Y:0 is implicit
+		v3 = Vertex{}      // X:0 and Y:0
+		pV  = &Vertex{1, 2} // has type *Vertex
+	)
+
+	fmt.Println(v1, pV, v2, v3)
+
+
+	var arr [2]string
+	arr[0] = "Hello, "
+	arr[1] = "World!"
+
+	fmt.Println(arr)
+
+
+	// Slice literals
+	s := []struct {
+		i int
+		b bool
+	}{
+		{2, true},
+		{3, false},
+		{5, true},
+		{7, true},
+		{11, false},
+		{13, true},
+	}
+	fmt.Println(s)
+
+
+
+	/*
+		dynamically-sized arrays.
+	 */
+	a2 := make([]int, 5)
+	printSlice("a", a2)
+
+	b2 := make([]int, 0, 5)
+	printSlice("b", b2)
+
+
+	var s2 []int
+	printSlice("Before Appending", s2)
+
+	// We can add more than one element at a time.
+	s2 = append(s2, 2, 3, 4)
+	printSlice("After Appending", s2)
+
+
+	/*
+		Range
+	 */
+
+	var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+	for i, v := range pow {
+		fmt.Printf("2**%d = %d\n", i, v)
+	}
+
+
+	/*
+		A map maps keys to values.
+	 */
+	var m map[string]Vertex
+
+	m = make(map[string]Vertex)
+	m["Bell Labs"] = Vertex{
+		40, -74,
+	}
+	fmt.Println(m)
+	fmt.Println(m["Bell Labs"])
+
+
+
+	fib := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(fib())
+	}
+
 }
 
 func add(x int, y int) int {
@@ -165,4 +265,24 @@ func split(sum int) (x, y int) {
 	x = sum * 4 / 9
 	y = sum - x
 	return
+}
+
+
+func printSlice(s string, x []int) {
+	fmt.Printf("%s len=%d cap=%d %v\n",
+		s, len(x), cap(x), x)
+}
+
+
+// fibonacci is a function that returns
+// a function that returns an int.
+func fibonacci() func() int {
+	prev := 0
+	next := 1
+	return func() int {
+		fib := next + prev
+		prev = next
+		next = fib
+		return fib
+	}
 }

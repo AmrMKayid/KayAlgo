@@ -1,8 +1,20 @@
 class BinarySearch():
+	'''
+	Read Google Blog about Binary Search BUG:
+	https://ai.googleblog.com/2006/06/extra-extra-read-all-about-it-nearly.html
+
+	The binary-search bug applies equally to mergesort, and to other divide-and-conquer algorithms.
+
+	-> mid value: it fails if the sum of low and high is greater than the maximum positive int value (2^31 - 1).
+	'''
+
 	def Recursive(self, arr, left, right, value):
 		''' implemntation of Recursive Binary Search Algorithm'''
+		if len(nums) == 0:
+        	return -1
+        	
 		if right >= left:
-			mid = left + (right - left) // 2
+			mid = left + ((right - left) // 2)
 			if (value == arr[mid]):
 				return "Value {} found @ index {}".format(value, mid)
 			elif(value < arr[mid]):
@@ -15,10 +27,13 @@ class BinarySearch():
 
 	def Iterative(self, arr, value):
 		''' implemntation of Iterative Binary Search Algorithm'''
+		if len(nums) == 0:
+        	return -1
+
 		left = 0
 		right = len(arr) - 1
 		while right >= left:
-		    mid = (right + left)//2
+		    mid = left + ((right - left) // 2)
 		    if(arr[mid] == value):
 		        return "Value {} found @ index {}".format(value, mid)
 		    elif(arr[mid] > value):

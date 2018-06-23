@@ -25,21 +25,13 @@ func main() {
         s2 string
     )
     // Read and save an integer, double, and String to your variables.
-    for i := 1; i <= 3 && scanner.Scan(); i++ {
-        switch i {
-        case 1:
-            i2, _ = strconv.ParseUint(scanner.Text(), 10, 64)
-        case 2:
-            d2, _ = strconv.ParseFloat(scanner.Text(), 64)
-        case 3:
-            s2 = scanner.Text()
-        }
-    }
+    fmt.Scanf("%d\n%f\n", &i2, &d2)
+    s2, _ := scanner.ReadString('\n')
 
     // Print the sum of both integer variables on a new line.
     fmt.Println(i + i2)
     // Print the sum of the double variables on a new line.
-    fmt.Printf("%0.1f\n", d + d2)
+    fmt.Printf("%.1f\n", d + d2)
     // Concatenate and print the String variables on a new line
     // The 's' variable above should be printed first.
     fmt.Println(s + s2)

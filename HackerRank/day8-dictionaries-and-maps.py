@@ -3,7 +3,7 @@ phoneBook = {}
 for i in range(n):
     line = input().split(' ')
     phoneBook[line[0]] = line[1]
-    #print(line)
+    # print(line)
 
 for i in range(n):
     name = input()

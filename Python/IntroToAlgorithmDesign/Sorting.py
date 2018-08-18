@@ -1,7 +1,7 @@
 def insertion_sort(arr):
     """
     insertion sort is a method for sorting that starts with a single element (thus forming a trivially sorted list)
-     and then incrementally inserts the remaining elements so that the list stays sorted
+    and then incrementally inserts the remaining elements so that the list stays sorted
     :param arr: array that need to be sorted
     :return: sorted array
     """
@@ -15,6 +15,12 @@ def insertion_sort(arr):
 
 
 def selection_sort(arr):
+    """
+    selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order)
+    from unsorted part and putting it at the beginning. The algorithm maintains two subarrays in a given array.
+    :param arr: array that need to be sorted
+    :return: sorted array
+    """
     for i in range(len(arr)):
         min_index = i
         for j in range(i + 1, len(arr)):

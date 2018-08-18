@@ -14,6 +14,27 @@ def insertion_sort(arr):
     return arr
 
 
+def selection_sort(arr):
+    for i in range(len(arr)):
+        min_index = i
+        for j in range(i + 1, len(arr)):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+
+    return arr
+
+
+print("#----------- Insertion Sort -----------#")
+
 print(insertion_sort([154, 245, 568, 324, 654, 324]))
 
 print(insertion_sort(["Mike", "Bob", "Sally", "Jill", "Jan"]))
+
+print("\n\n")
+
+print("#----------- Selection Sort -----------#")
+
+print(selection_sort([154, 245, 568, 324, 654, 324]))
+
+print(selection_sort(["Mike", "Bob", "Sally", "Jill", "Jan"]))

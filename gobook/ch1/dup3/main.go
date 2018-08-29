@@ -10,6 +10,7 @@ import (
 func main() {
 	counts := make(map[string]int)
 	for _, filename := range os.Args[1:] {
+		// reads the entire contents of a named file
 		data, err := ioutil.ReadFile(filename)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "dup3: %v\n", err)

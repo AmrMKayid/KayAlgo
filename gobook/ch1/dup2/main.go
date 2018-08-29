@@ -19,9 +19,25 @@ func main() {
 				continue
 			}
 			countLines(f, counts)
+			// Exercise 1.4: Modify dup2 to print the names of all files
+			// in which each duplicated line occurs.
+			for _, n := range counts {
+				if n > 1 {
+					counts[arg] = -1
+					break
+				}
+			}
 			f.Close()
 		}
 	}
+
+	fmt.Println("Files")
+	for line, n := range counts {
+		if n == -1 {
+			fmt.Printf("%s\n", line)
+		}
+	}
+	fmt.Println("\n#--------------------#\n")
 	for line, n := range counts {
 		if n > 1 {
 			fmt.Printf("count: %d \t Line: %s\n", n, line)

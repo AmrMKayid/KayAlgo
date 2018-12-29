@@ -1,1 +1,0 @@
-print('##### Interview Preparation Challenge #####')

@@ -18,5 +18,14 @@ class Solution:
             prev = curr
             curr = next_node
         return prev
+
+
+    def reverseList_rec(self, head):
+        if head == None or head.next == None:
+            return head
+        p = reverseList_rec(head.next)
+        head.next.next = head
+        head.next = None
+        return p
         
         

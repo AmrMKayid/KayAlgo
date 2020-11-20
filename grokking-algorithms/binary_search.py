@@ -1,5 +1,6 @@
-from typing import Any, List
 import random
+from typing import Any
+from typing import List
 
 
 def binary_search(
@@ -7,7 +8,7 @@ def binary_search(
     array: List[Any],
     item: Any,
 ) -> int:
-  """Binary search algorithm
+  """Binary search algorithm.
 
   Runtime: O(log(n))
 
